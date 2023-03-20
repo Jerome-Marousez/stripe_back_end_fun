@@ -1,6 +1,6 @@
 class Member < ApplicationRecord
 	has_one :subscription
-	has_many :subscription_plan, through: :subscriptions
+	has_one :subscription_plan, through: :subscription
 
 	validates :username, presence: true
 

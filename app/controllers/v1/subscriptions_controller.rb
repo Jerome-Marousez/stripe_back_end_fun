@@ -14,7 +14,7 @@ class V1::SubscriptionsController < V1::ApiController
 	def create
 		params_present = [@subscription_plan_id, @member_id, @product_id].all?(&:present?)
 		if params_present
-			@plan = SubscriptionPlan.find_by(product: @product_id)
+			@plan = SubscriptionPlan.find_by(product_id: @product_id)
 			@member = Member.find(@member_id)
 			ExternalSubscriptionService.new.subscribe(
 				@plan,

@@ -96,7 +96,7 @@ class ExternalSubscriptionService
       name: product.name,
       currency: plan_currency,
       interval: plan_interval,
-      product: product.id,
+      product_id: product.id,
       amount: plan_amount,
       description: product.description,
     })
@@ -158,15 +158,10 @@ class ExternalSubscriptionService
 	  })
 
 	  if subscription.present?
-	    new_subscription = Subscription.create({
-	      member_id: member,
-	      subscription_plan_id: plan
+	    Subscription.create({
+	      member_id: member.id,
+	      subscription_plan_id: plan.id
 	    })
-	    new_subscription.save
-	    member.subscriptions = new_subscription
-	    member.save
-	    plan.subscriptions = new_subscription
-	    plan.save
     else
       render json: { error: "there was an issue creating the subscription" }, status: 404
     end
