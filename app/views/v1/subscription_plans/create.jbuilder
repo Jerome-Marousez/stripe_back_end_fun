@@ -1,0 +1,1 @@
+json.plan @plan, partial: 'subscription_plans', as: :plan

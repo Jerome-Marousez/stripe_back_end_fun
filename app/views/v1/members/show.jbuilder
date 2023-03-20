@@ -1,0 +1,1 @@
+json.member @member, partial: 'members', as: :member
